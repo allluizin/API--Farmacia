@@ -69,6 +69,12 @@ public class Remedio {
 		this.validade = dados.validade();
 		
 	}
+	public Via getVia() {
+		return via;
+	}
+	public Laboratorio getLaboratorio() {
+		return laboratorio;
+	}
 	public String getNome() {
 		return nome;
 	}
