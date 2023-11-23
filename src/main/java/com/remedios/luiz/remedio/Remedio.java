@@ -1,5 +1,6 @@
 package com.remedios.luiz.remedio;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
@@ -42,15 +43,15 @@ public class Remedio {
 	private Via via;
 	
 	private String lote;
-	private String quantidade;
-	private String validade;
+	private int quantidade;
+	private LocalDate validade;
 	
 	@Enumerated(EnumType.STRING) //este atributo é um enum e tem que ser mapeado pelo jpa
 	private Laboratorio laboratorio;
 	public Remedio() {
 		//construtor vazio
 	}
-	public Remedio(String nome, Via via, String lote, String quantidade, String validade, Laboratorio laboratorio){
+	public Remedio(String nome, Via via, String lote, int quantidade, LocalDate validade, Laboratorio laboratorio){
 		this.nome = nome;
 		this.via = via;
 		this.lote = lote;
@@ -61,11 +62,12 @@ public class Remedio {
 	
 	public Remedio(DadosCadastroRemedio dados) {
 		this.nome = dados.nome();
+		this.laboratorio = dados.laboratorio();
 		this.via = dados.via();
 		this.lote = dados.lote();
 		this.quantidade = dados.quantidade();
 		this.validade = dados.validade();
-		this.laboratorio = dados.laboratorio();
+		
 	}
 	public String getNome() {
 		return nome;
@@ -75,11 +77,11 @@ public class Remedio {
 		this.nome = nome;
 	}
 
-	public String getQuantidade() {
+	public int getQuantidade() {
 		return quantidade;
 	}
 
-	public void setQuantidade(String quantidade) {
+	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
 
@@ -91,11 +93,11 @@ public class Remedio {
 		this.lote = lote;
 	}
 
-	public String getValidade() {
+	public LocalDate getValidade() {
 		return validade;
 	}
 
-	public void setValidade(String validade) {
+	public void setValidade(LocalDate validade) {
 		this.validade = validade;
 	}
 }

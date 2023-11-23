@@ -10,6 +10,8 @@ import com.remedios.luiz.remedio.DadosCadastroRemedio;
 import com.remedios.luiz.remedio.Remedio;
 import com.remedios.luiz.remedio.RemedioRepository;
 
+import jakarta.validation.Valid;
+
 @RestController//identificar que é spring
 @RequestMapping("/remedios")//mapeamento
 public class RemedioController {
@@ -19,7 +21,7 @@ public class RemedioController {
 	private RemedioRepository repository;
 	
 	@PostMapping//metodo de envio de dados
-	public void cadastrar(@RequestBody DadosCadastroRemedio dados) {
+	public void cadastrar(@RequestBody @Valid DadosCadastroRemedio dados) {
 		repository.save(new Remedio(dados));
 	}
 }
