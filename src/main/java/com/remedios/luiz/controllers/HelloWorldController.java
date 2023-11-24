@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController //dizer que vai ser um controle
 @RequestMapping("/hello") //vai ser acessado por esse link
-public class HelloWorld {
+public class HelloWorldController {
 	
 	@GetMapping
 	public String olamundo() {

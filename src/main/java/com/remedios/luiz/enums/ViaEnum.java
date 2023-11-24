@@ -1,8 +1,8 @@
-package com.remedios.luiz.remedio;
+package com.remedios.luiz.enums;
 //enum sao valores constantes
 //pra evitar que quem for cadastrar um produto nao coloque via algo que nao existe
 //isso que é um enum
-public enum Via {
+public enum ViaEnum {
 	
 	ORAL,
 	NASAL,
