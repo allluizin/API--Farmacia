@@ -70,6 +70,11 @@ public class RemedioEntity {
 	public Long getId() {
 		return id;
 	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public ViaEnum getVia() {
 		return via;
 	}

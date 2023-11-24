@@ -2,7 +2,9 @@ package com.remedios.luiz.entities;
 
 import com.remedios.luiz.enums.SexoEnum;
 import com.remedios.luiz.forms.UserForm;
+import com.remedios.luiz.forms.UserUpdateForm;
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import org.hibernate.annotations.IdGeneratorType;
 
 import java.util.Objects;
@@ -63,6 +65,16 @@ public class UsuarioEntity {
     public void setSexo(SexoEnum sexo) {
         this.sexo = sexo;
     }
+
+    public void updateUsers(@Valid UserUpdateForm user){
+        if(user.nome() != null){
+            this.nome = user.nome();
+        }
+        if (user.sexo() != null){
+            this.sexo = user.sexo();
+        }
+    }
+
 
     @Override
     public boolean equals(Object o) {
