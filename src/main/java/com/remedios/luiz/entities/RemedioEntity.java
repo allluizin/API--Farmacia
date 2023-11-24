@@ -1,8 +1,11 @@
-package com.remedios.luiz.remedio;
+package com.remedios.luiz.entities;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
+import com.remedios.luiz.forms.RemedioForm;
+import com.remedios.luiz.enums.LaboratorioEnum;
+import com.remedios.luiz.enums.ViaEnum;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -16,42 +19,27 @@ import lombok.EqualsAndHashCode;
 @Entity(name = "remedios")
 @Table(name = "Remedio")
 @EqualsAndHashCode(of = "id")
-public class Remedio {
+public class RemedioEntity {
 	
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Remedio other = (Remedio) obj;
-		return Objects.equals(id, other.id);
-	}
 
 	private String nome;
 	
 	@Enumerated(EnumType.STRING) //este atributo é um enum e tem que ser mapeado pelo jpa
-	private Via via;
+	private ViaEnum via;
 	
 	private String lote;
 	private int quantidade;
 	private LocalDate validade;
 	
 	@Enumerated(EnumType.STRING) //este atributo é um enum e tem que ser mapeado pelo jpa
-	private Laboratorio laboratorio;
-	public Remedio() {
+	private LaboratorioEnum laboratorio;
+	public RemedioEntity() {
 		//construtor vazio
 	}
-	public Remedio(String nome, Via via, String lote, int quantidade, LocalDate validade, Laboratorio laboratorio){
+	public RemedioEntity(String nome, ViaEnum via, String lote, int quantidade, LocalDate validade, LaboratorioEnum laboratorio){
 		this.nome = nome;
 		this.via = via;
 		this.lote = lote;
@@ -60,22 +48,32 @@ public class Remedio {
 		this.laboratorio = laboratorio;
 	}
 	
-	public Remedio(DadosCadastroRemedio dados) {
+	public RemedioEntity(RemedioForm dados) {
 		this.nome = dados.nome();
-		this.laboratorio = dados.laboratorio();
-		this.via = dados.via();
+		this.laboratorio = dados.laboratorioEnum();
+		this.via = dados.viaEnum();
 		this.lote = dados.lote();
 		this.quantidade = dados.quantidade();
 		this.validade = dados.validade();
-		
 	}
+
+	public void update(RemedioForm dados){
+		this.nome = dados.nome();
+		this.laboratorio = dados.laboratorioEnum();
+		this.via = dados.viaEnum();
+		this.lote = dados.lote();
+		this.quantidade = dados.quantidade();
+		this.validade = dados.validade();
+	}
+
+
 	public Long getId() {
 		return id;
 	}
-	public Via getVia() {
+	public ViaEnum getVia() {
 		return via;
 	}
-	public Laboratorio getLaboratorio() {
+	public LaboratorioEnum getLaboratorio() {
 		return laboratorio;
 	}
 	public String getNome() {
@@ -108,5 +106,21 @@ public class Remedio {
 
 	public void setValidade(LocalDate validade) {
 		this.validade = validade;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		RemedioEntity other = (RemedioEntity) obj;
+		return Objects.equals(id, other.id);
 	}
 }
