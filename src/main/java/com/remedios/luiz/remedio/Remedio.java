@@ -69,6 +69,9 @@ public class Remedio {
 		this.validade = dados.validade();
 		
 	}
+	public Long getId() {
+		return id;
+	}
 	public Via getVia() {
 		return via;
 	}
