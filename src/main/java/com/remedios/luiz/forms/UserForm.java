@@ -8,7 +8,6 @@ import jakarta.validation.constraints.NotBlank;
 public record UserForm(
         @NotBlank
         String nome,
-        @Min(18)
         int idade,
         @Enumerated
         SexoEnum sexo
