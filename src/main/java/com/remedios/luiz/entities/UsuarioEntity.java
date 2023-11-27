@@ -18,18 +18,26 @@ public class UsuarioEntity {
     private Long id;
     private String nome;
     private int idade;
+    @Enumerated(EnumType.STRING)
     private SexoEnum sexo;
 
-    public UsuarioEntity(Long id, String nome, int idade, SexoEnum sexo) {
+    private String email;
+    private String senha;
+
+    public UsuarioEntity(Long id, String nome, int idade, SexoEnum sexo, String email, String senha) {
         this.id = id;
         this.nome = nome;
         this.idade = idade;
         this.sexo = sexo;
+        this.email=email;
+        this.senha=senha;
     }
     public UsuarioEntity(UserForm user){
         this.nome = user.nome();
         this.idade = user.idade();
         this.sexo = user.sexo();
+        this.email= user.email();
+        this.senha=user.senha();
     }
     public UsuarioEntity(){}
 
@@ -64,6 +72,22 @@ public class UsuarioEntity {
 
     public void setSexo(SexoEnum sexo) {
         this.sexo = sexo;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     public void updateUsers(@Valid UserUpdateForm user){

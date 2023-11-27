@@ -10,6 +10,10 @@ public record UserForm(
         String nome,
         int idade,
         @Enumerated
-        SexoEnum sexo
+        SexoEnum sexo,
+        @NotBlank
+        String email,
+        @NotBlank
+        String senha
 ) {
 }

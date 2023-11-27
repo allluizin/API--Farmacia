@@ -5,6 +5,7 @@ import com.remedios.luiz.forms.RemedioForm;
 import com.remedios.luiz.services.RemedioService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,9 +45,9 @@ public class RemedioController {
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity<Void> deletar(@PathVariable Long id){
+    public ResponseEntity<String> deletar(@PathVariable Long id){
         remedioService.deletar(id);
-        return ResponseEntity.noContent().build();
+        return new ResponseEntity<>("Deletado com sucesso", HttpStatus.OK);
     }
 
     @PutMapping("/{id}")

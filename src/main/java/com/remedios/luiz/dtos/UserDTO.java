@@ -7,10 +7,11 @@ public record UserDTO(
         Long id,
         String nome,
         int idade,
-        SexoEnum sexo
+        SexoEnum sexo,
+        String email
 ) {
     public UserDTO(UsuarioEntity usuarioEntity){
-        this(usuarioEntity.getId(), usuarioEntity.getNome(), usuarioEntity.getIdade(), usuarioEntity.getSexo());
+        this(usuarioEntity.getId(), usuarioEntity.getNome(), usuarioEntity.getIdade(), usuarioEntity.getSexo(), usuarioEntity.getEmail());
     }
 
 }

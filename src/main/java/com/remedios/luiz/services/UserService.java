@@ -32,10 +32,7 @@ public class UserService {
     }
     //delete
     public void deletar(long id){
-        final var usuario = searchForId(id);
-        //nao poderia simplesmente mandar um
-        //userRepository.deleteById(usuario);
-        userRepository.delete(usuario);
+        userRepository.deleteById(id);
     }
     //service for update
     public UsuarioEntity update(Long id, UserUpdateForm form){

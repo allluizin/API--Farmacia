@@ -30,8 +30,7 @@ public class RemedioService {
     }
 
     public void deletar(Long id){
-        final var remedio = buscarPorId(id);
-        remedioRepository.delete(remedio);
+        remedioRepository.deleteById(id);
     }
 
     public RemedioEntity atualizar(Long id, RemedioForm form){

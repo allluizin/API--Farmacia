@@ -9,6 +9,8 @@ import com.remedios.luiz.services.UserService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -48,12 +50,9 @@ public class UsuarioController {
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity<Void> deletar(@PathVariable Long id){
+    public ResponseEntity<String> deletar(@PathVariable Long id){
         userService.deletar(id);
-        return ResponseEntity.noContent().build();
-
-//        userRepository.deleteById(id);
-//        System.out.println("excluido com sucesso");
+        return new ResponseEntity<>("Deletado com sucesso", HttpStatus.OK);
     }
 
 }
